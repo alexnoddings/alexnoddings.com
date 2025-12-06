@@ -60,11 +60,13 @@ import BaseHead from "$/layouts/Head.astro";
       }
     </style>
     <script>
-      let bg = document.querySelector("#bg-dotted") as HTMLDivElement;
-      window.addEventListener("mousemove", (e) => {
-        bg?.style.setProperty("--bg-cover-x", e.clientX + "px");
-        bg?.style.setProperty("--bg-cover-y", e.clientY + "px");
-      });
+      const bg = document.querySelector("#bg-dotted") as HTMLDivElement;
+      if (!!bg) {
+        window.addEventListener("mousemove", (e) => {
+          bg.style.setProperty("--bg-cover-x", e.clientX + "px");
+          bg.style.setProperty("--bg-cover-y", e.clientY + "px");
+        });
+      }
     </script>
   </body>
 </html>

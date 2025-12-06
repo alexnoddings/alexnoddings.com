@@ -1,5 +1,5 @@
 ---
-import BaseHead from "@layouts/Head.astro";
+import BaseHead from "$/layouts/Head.astro";
 ---
 
 <!doctype html>
@@ -18,7 +18,7 @@ import BaseHead from "@layouts/Head.astro";
       <slot />
     </div>
     <style is:global>
-      @reference "@styles/site.css";
+      @reference "$/styles/site.css";
       #bg-dotted {
         @apply fixed inset-0 -z-20;
         @apply bg-violet;

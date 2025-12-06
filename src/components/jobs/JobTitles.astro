@@ -1,6 +1,6 @@
 ---
-import "@styles/site.css";
-import JobTitlesItem from "@components/jobs/JobTitlesItem.astro";
+import "$/styles/site.css";
+import JobTitlesItem from "$/components/jobs/JobTitlesItem.astro";
 
 interface Title {
   name: string;
@@ -39,7 +39,7 @@ const { titles, mainTitle, offTitle } = Astro.props;
 </div>
 
 <style>
-  @reference "@styles/site.css";
+  @reference "$/styles/site.css";
   .job-titles {
     @apply grid gap-x-2;
     grid-template-columns: repeat(5, max-content);

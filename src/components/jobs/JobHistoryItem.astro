@@ -1,5 +1,5 @@
 ---
-import JobTitles from "@components/jobs/JobTitles.astro";
+import JobTitles from "$/components/jobs/JobTitles.astro";
 
 interface Title {
   name: string;
@@ -64,7 +64,7 @@ const offTitleStyle = {
 </a>
 
 <style>
-  @reference "@styles/site.css";
+  @reference "$/styles/site.css";
   .job-summary li::before {
     content: "‣";
     @apply mr-1;

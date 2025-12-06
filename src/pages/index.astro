@@ -1,13 +1,12 @@
 ---
-import Footer from "@layouts/Footer.astro";
-import About from "@components/index/IndexAbout.astro";
-import Experience from "@components/index/IndexExperience.astro";
-import Projects from "@components/index/IndexProjects.astro";
-import Summary from "@components/index/IndexSummary.astro";
-import Socials from "@components/index/IndexSocials.astro";
-
-import Link from "@components/Link.astro";
-import MainLayout from "@layouts/MainLayout.astro";
+import Footer from "$/layouts/Footer.astro";
+import About from "$/components/index/IndexAbout.astro";
+import Experience from "$/components/index/IndexExperience.astro";
+import Projects from "$/components/index/IndexProjects.astro";
+import Summary from "$/components/index/IndexSummary.astro";
+import Socials from "$/components/index/IndexSocials.astro";
+import Link from "$/components/Link.astro";
+import MainLayout from "$/layouts/MainLayout.astro";
 
 const links = [
   { title: "About me", href: "#about" },
@@ -48,7 +47,7 @@ const links = [
   </div>
 
   <style>
-    @reference "@styles/site.css";
+    @reference "$/styles/site.css";
     .column-link {
       @apply block px-6 py-4 transition-transform lg:hover:ps-8;
       transition-property: padding;

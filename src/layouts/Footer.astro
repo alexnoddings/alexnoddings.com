@@ -1,7 +1,5 @@
 ---
 import Link from "$/components/Link.astro";
-import LinkIcon from "$/components/LinkIcon.astro";
-import GitHubIcon from "$/components/icons/GitHubIcon.astro";
 import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"div">;
@@ -28,14 +26,14 @@ const { class: className, ...props } = Astro.props;
   >
     Tailwind
   </Link>
-  <LinkIcon
-    class="ms-1"
+  on
+  <Link
+    class="text-mist/80"
     href="https://github.com/alexnoddings/alexnoddings.github.io/"
     data-umami-event="profile-link"
     data-umami-event-site="github"
     data-umami-event-loc="footer"
   >
-    <span class="sr-only">Check out this site's source code on GitHub</span>
-    <GitHubIcon class="inline" width={22} height={22} />
-  </LinkIcon>
+    GitHub
+  </Link>
 </footer>

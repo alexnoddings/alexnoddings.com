@@ -23,15 +23,19 @@ const { title, links, desc } = project;
         {title}
     </span>
     {
-        links.map((link) => (
-            <a href={link.href} class="mx-1 ms-2 font-normal text-slate underline">
+        links.map((link) =>
+            link.href == undefined ? (
+                <span class="text-slate mx-1 ms-2 font-normal line-through">{link.text}</span>
+            ) : (
+            <a href={link.href} class="text-slate mx-1 ms-2 font-normal underline">
                 {link.text}
             </a>
-        ))
+          ),
+        )
     }
 </h4>
 <p>
-    {desc}
+  {desc}
 </p>
 
 <style>

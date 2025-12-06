@@ -5,9 +5,10 @@ interface Props {
   title: string;
   techs: string[];
   href: string;
+  bg: string;
 }
 
-const { title, techs, href, ...props } = Astro.props;
+const { title, techs, href, bg, ...props } = Astro.props;
 ---
 
 <a
@@ -31,3 +32,9 @@ const { title, techs, href, ...props } = Astro.props;
     {techs.map((tech) => <li class="rounded-full bg-lavender/10 px-2 py-1 text-xs text-lavender">{tech}</li>)}
   </ul>
 </a>
+
+<style define:vars={{ bg }}>
+  a:hover {
+    background-color: var(--bg);
+  }
+</style>

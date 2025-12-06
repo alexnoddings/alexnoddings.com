@@ -11,6 +11,7 @@ const { class: className, ...props } = Astro.props;
 </div>
 
 <style is:global>
+  @reference "@styles/site.css";
   .md-content h1 {
     @apply mb-4 mt-8 font-header text-xl text-mist;
   }

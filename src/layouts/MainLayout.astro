@@ -18,6 +18,7 @@ import BaseHead from "@layouts/Head.astro";
       <slot />
     </div>
     <style is:global>
+      @reference "@styles/site.css";
       #bg-dotted {
         @apply fixed inset-0 -z-20;
         @apply bg-violet;
@@ -51,7 +52,7 @@ import BaseHead from "@layouts/Head.astro";
         }
         a:hover,
         .link-text:hover {
-          @apply bg-none text-mist decoration-underline-thick !important;
+          @apply bg-none text-mist decoration-thick;
         }
         a.link-not-text {
           @apply no-underline;

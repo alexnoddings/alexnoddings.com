@@ -14,7 +14,7 @@
     --color-slate: #4B5565;
     --color-charcoal: #10182F;
 
-    --font-header: '"Space Grotesk"', "Atkinson", "sans-serif";
+    --font-header: "Space Grotesk", "Atkinson", "sans-serif";
     --font-body: "Atkinson", "sans-serif";
 
     --text-xs: 0.85rem;

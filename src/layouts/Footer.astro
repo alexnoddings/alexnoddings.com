@@ -9,31 +9,15 @@ const { class: className, ...props } = Astro.props;
 
 <footer class:list={[className, "text-center text-smoke"]} {...props}>
   &copy; Alex Noddings, built with
-  <Link
-    class="text-mist/80"
-    href="https://astro.build/"
-    data-umami-event="external-link"
-    data-umami-event-site="astro"
-  >
+  <Link class="text-mist/80" href="https://astro.build/">
     Astro
   </Link>
    and
-  <Link
-    class="text-mist/80"
-    href="https://tailwindcss.com/"
-    data-umami-event="external-link"
-    data-umami-event-site="tailwind"
-  >
+  <Link class="text-mist/80" href="https://tailwindcss.com/">
     Tailwind
   </Link>
   on
-  <Link
-    class="text-mist/80"
-    href="https://github.com/alexnoddings/alexnoddings.com/"
-    data-umami-event="profile-link"
-    data-umami-event-site="github"
-    data-umami-event-loc="footer"
-  >
+  <Link class="text-mist/80" href="https://github.com/alexnoddings/alexnoddings.com/">
     GitHub
   </Link>
 </footer>

@@ -18,18 +18,16 @@ const links = [
   <div class="home">
     <header class="home-left">
       <IndexSummary />
-      <div>
-        <ul class="home-links">
-          {links.map(({ title, href }) => (
-            <li class="w-fit">
-              <a href={href} class="link-fancy">
-                {title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
       <IndexSocials />
+      <ul class="home-links">
+        {links.map(({ title, href }) => (
+          <li class="w-fit">
+            <a href={href} class="link-fancy">
+              {title}
+            </a>
+          </li>
+        ))}
+      </ul>
     </header>
     <div class="home-right">
       <IndexAbout />

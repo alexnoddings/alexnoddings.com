@@ -9,7 +9,7 @@ export const GET: APIRoute = async function GET() {
   await page.setViewport({ width: 2400, height: 1260 });
 
   // Navigate the page to a URL
-  await page.goto("http://localhost:4321/~gen/og/og", { waitUntil: "networkidle0" });
+  await page.goto("http://localhost:4321/~public/og", { waitUntil: "networkidle0" });
 
   const buffer = await page.screenshot({ fullPage: true, type: "png" });
 

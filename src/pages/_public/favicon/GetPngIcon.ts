@@ -5,7 +5,7 @@ export async function getPngIcon(size: number): Promise<Response> {
   const page = await browser.newPage();
 
   await page.setViewport({ width: size, height: size });
-  await page.goto("http://localhost:4321/~gen/favicon/favicon", { waitUntil: "networkidle0" });
+  await page.goto("http://localhost:4321/~public/favicon", { waitUntil: "networkidle0" });
 
   const buffer = await page.screenshot({ fullPage: true, type: "png", omitBackground: true });
 

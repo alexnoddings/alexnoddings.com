@@ -1,21 +1,26 @@
 ---
 type Props = {
-	class?: string
+  class?: string
 };
 
 const { class: className } = Astro.props;
 ---
 <footer class:list={[className, "text-center text-smoke"]}>
-	&copy; Alex Noddings, built with
-	<a class="link-fancy" href="https://astro.build/">
-		Astro
-	</a>
-	and
-	<a class="link-fancy" href="https://tailwindcss.com/">
-		Tailwind
-	</a>
-	on
-	<a class="link-fancy" href="https://github.com/alexnoddings/alexnoddings.com/">
-		GitHub
-	</a>
+  <p class="font-header">
+    &copy; Alex Noddings
+  </p>
+  <p class="text-sm">
+    Built with
+    <a class="link-fancy font-mono" href="https://astro.build/">Astro</a>
+    and
+    <a class="link-fancy font-mono" href="https://tailwindcss.com/">Tailwind</a>
+  </p>
+  <p class="text-sm">
+    Running on
+    <a class="link-fancy font-mono" href="https://workers.cloudflare.com/">Cloudflare</a>
+  </p>
+  <p class="text-sm">
+    Source code on
+    <a class="link-fancy font-mono" href="https://github.com/alexnoddings/alexnoddings.com/">GitHub</a>
+  </p>
 </footer>

@@ -1,56 +1,69 @@
 ---
-import Footer from "$/layouts/Footer.astro";
-import About from "$/components/index/IndexAbout.astro";
-import Experience from "$/components/index/IndexExperience.astro";
-import Projects from "$/components/index/IndexProjects.astro";
-import Summary from "$/components/index/IndexSummary.astro";
-import Socials from "$/components/index/IndexSocials.astro";
-import Link from "$/components/Link.astro";
+import IndexAbout from "$/components/index/IndexAbout.astro";
+import IndexSocials from "$/components/index/IndexSocials.astro";
 import MainLayout from "$/layouts/MainLayout.astro";
+import IndexExperience from "$/components/index/IndexExperience.astro";
+import IndexProjects from "$/components/index/IndexProjects.astro";
+import IndexSummary from "$/components/index/IndexSummary.astro";
+import Footer from "$/layouts/Footer.astro";
 
 const links = [
   { title: "About me", href: "#about" },
   { title: "Experience", href: "#experience" },
-  { title: "Projects", href: "#projects" },
+  { title: "Projects", href: "#projects" }
 ];
 ---
 
 <MainLayout>
-  <div class="flex flex-col gap-2 lg:flex-row lg:gap-8">
-    <header
-      class="sticky flex w-full shrink-0 flex-col gap-2 pb-6 pt-12 lg:top-0 lg:max-h-screen lg:w-[400px] lg:py-20"
-    >
-      <Summary />
+  <div class="home">
+    <header class="home-left">
+      <IndexSummary />
       <div>
-        {
-          links != null && links.length > 0 && (
-            <ul class="flex flex-row justify-center lg:mt-12 lg:flex-col">
-              {links.map(({ title, href }) => (
-                <li class="w-fit">
-                  <Link class="column-link" href={href}>
-                    {title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )
-        }
+        <ul class="home-links">
+          {links.map(({ title, href }) => (
+            <li class="w-fit">
+              <a href={href} class="link-fancy">
+                {title}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-      <Socials />
+      <IndexSocials />
     </header>
-    <main class="flex w-full flex-col gap-2 pb-64">
-      <About />
-      <Experience />
-      <Projects />
-      <Footer class="mt-20" />
-    </main>
+    <div class="home-right">
+      <IndexAbout />
+      <IndexExperience />
+      <IndexProjects />
+      <Footer class="mt-20 mb-20" />
+    </div>
   </div>
-
-  <style>
-    @reference "$/styles/site.css";
-    .column-link {
-      @apply block px-6 py-4 transition-transform lg:hover:ps-8;
-      transition-property: padding;
-    }
-  </style>
 </MainLayout>
+
+<style>
+    @reference "$/styles/site.css";
+    .home {
+        @apply flex flex-col gap-2;
+        @apply lg:flex-row lg:gap-8;
+    }
+
+    .home-left {
+        @apply sticky flex w-full shrink-0 flex-col gap-2;
+        @apply pb-6 pt-12;
+        @apply lg:top-0 lg:max-h-screen lg:w-[400px] lg:py-20;
+
+        .home-links {
+            @apply flex flex-row justify-center;
+            @apply lg:mt-12 lg:flex-col;
+
+            a {
+                @apply block px-6 py-4 transition-transform lg:hover:ps-8;
+                transition-property: padding;
+            }
+        }
+    }
+
+    .home-right {
+        @apply flex w-full flex-col gap-2;
+    }
+</style>

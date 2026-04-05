@@ -1,119 +1,106 @@
 @import "tailwindcss";
 
 @theme {
-    --color-transparent: transparent;
-    --color-violet: #111428;
-    --color-smoke: #95A5B5;
-    --color-mist: #E2E8EF;
-    --color-lavender: #9880E8;
-    --color-orchid: #E666CC;
-    --color-flamingo: #FA9AA2;
-    --color-turquoise: #55CEDA;
-    /* Resume PDF */
-    --color-amethyst: #7220D2;
-    --color-slate: #4B5565;
-    --color-charcoal: #10182F;
+	--color-transparent: transparent;
+	--color-violet: #111428;
+	--color-charcoal: #10182F;
+	--color-slate: #4B5565;
+	--color-smoke: #95A5B5;
+	--color-mist: #E2E8EF;
+	--color-lavender: #9880E8;
+	--color-amethyst: #7220D2;
+	--color-orchid: #E666CC;
+	--color-flamingo: #FA9AA2;
+	--color-turquoise: #55CEDA;
 
-    --font-header: "Space Grotesk", "Atkinson", "sans-serif";
-    --font-body: "Atkinson", "sans-serif";
+    --font-header: var(--font-header);
+    --font-body: var(--font-body);
+    --font-mono: var(--font-mono);
 
-    --text-xs: 0.85rem;
-    --text-sm: 1rem;
-    --text-base: 1.2rem;
-    --text-lg: 1.75rem;
-    --text-xl: 2rem;
-    --text-2xl: 2.5rem;
-    --text-3xl: 3.5rem;
-    --text-pdf-sm: 0.7rem;
-    --text-pdf-base: 0.8rem;
-    --text-pdf-lg: 1.2rem;
-    --text-pdf-xl: 2rem;
-    --text-pdf-xxl: 3rem;
+	--text-xs: 0.85rem;
+	--text-sm: 1rem;
+	--text-base: 1.2rem;
+	--text-lg: 1.75rem;
+	--text-xl: 2rem;
+	--text-2xl: 2.5rem;
+	--text-3xl: 3.5rem;
+	--text-pdf-sm: 0.7rem;
+	--text-pdf-base: 0.8rem;
+	--text-pdf-lg: 1.2rem;
+	--text-pdf-xl: 2rem;
+	--text-pdf-xxl: 3rem;
 
-    --leading-normal: 1.13;
-    --leading-relaxed: 1.25;
-    --leading-loose: 1.33;
+	--leading-normal: 1.13;
+	--leading-relaxed: 1.25;
+	--leading-loose: 1.33;
 
-    --decoration: 2px;
-    --decoration-thick: 4px;
+	--decoration: 2px;
+	--decoration-thick: 4px;
 
-    --breakpoint-sm: 384px;
-    --breakpoint-md: 512px;
-    --breakpoint-lg: 1024px;
-    --breakpoint-xl: 1280px;
+	--breakpoint-sm: 384px;
+	--breakpoint-md: 512px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1280px;
 }
 
-@font-face {
-    font-family: "Atkinson";
-    src: local(""),
-    url("/fonts/atkinson-regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Atkinson";
-    src: local(""),
-    url("/fonts/atkinson-bold.woff") format("woff");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Space Grotesk";
-    src: local(""),
-    url("/fonts/space-grotesk-bold.woff") format("woff");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+body {
+	@apply font-body;
 }
 
 @utility text-gradient {
-    @apply bg-clip-text text-transparent;
+	@apply bg-clip-text text-transparent;
 }
 
 @utility text-gradient-r {
-    @apply text-gradient;
-    @apply bg-gradient-to-r;
+	@apply text-gradient;
+	@apply bg-linear-to-r;
 }
 
 @utility decoration {
-    text-decoration-thickness: 2px;
+	text-decoration-thickness: 2px;
 }
 
 @utility decoration-thick {
-    text-decoration-thickness: 4px;
-}
-
-*::selection {
-    @apply bg-lavender/40;
+	text-decoration-thickness: 4px;
 }
 
 @media (prefers-reduced-motion) {
-    .transition-all,
-    .transition,
-    .transition-colors,
-    .transition-opacity,
-    .transition-shadow,
-    .transition-transform {
-        transition-property: none;
-    }
+	.transition-all,
+	.transition,
+	.transition-colors,
+	.transition-opacity,
+	.transition-shadow,
+	.transition-transform {
+		transition-property: none;
+	}
 }
 
 @media (prefers-contrast: more) {
-    a,
-    .link-text {
-        @apply underline decoration;
-    }
+	a,
+	.link-text {
+		@apply underline decoration;
+	}
 
-    a:hover,
-    .link-text:hover {
-        @apply decoration-thick bg-none text-mist;
-    }
+	a:hover,
+	.link-text:hover {
+		@apply decoration-thick bg-none text-mist;
+	}
 
-    a.link-not-text {
-        @apply no-underline;
-    }
+	a.link-not-text {
+		@apply no-underline;
+	}
+}
+
+*::selection {
+	@apply bg-lavender/40;
+}
+
+a.link-fancy {
+	@apply text-mist;
+	@apply hover:text-gradient-r hover:from-lavender hover:to-orchid;
+}
+
+a.link-icon {
+	@apply fill-smoke;
+	@apply hover:fill-lavender;
 }

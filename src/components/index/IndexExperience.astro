@@ -3,11 +3,12 @@ import JobHistoryItem from "$/components/jobs/JobHistoryItem.astro";
 
 import { getCollection } from "astro:content";
 
-const positions = (await getCollection("resume")).sort((pos1, pos2) => pos2.data.id - pos1.data.id);
+const resume = await getCollection("resume");
+const positions = resume.sort((a, b) => b.data.id - a.data.id);
 ---
 
 <section id="experience" class="pt-10 lg:pt-16">
-    <h2 class="flex-1 font-header text-lg text-mist">Experience</h2>
+    <h2 class="flex-1 font-header font-medium text-lg text-mist">Experience</h2>
     <p class="mt-2 text-sm">For privacy, exact dates and details aren't provided on my public site.</p>
     <ol class="group/job-history mt-4 flex flex-col">
         {
@@ -18,7 +19,7 @@ const positions = (await getCollection("resume")).sort((pos1, pos2) => pos2.data
                         techs={position.data.techs}
                         skills={position.data.skills}
                         summaries={position.data.summaries}
-                        slug={position.slug}
+                        slug={position.id}
                     />
                 </li>
             ))

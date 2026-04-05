@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import {type CollectionEntry, getCollection, render} from "astro:content";
 import MainLayout from "$/layouts/MainLayout.astro";
 import MarkdownContent from "$/components/MarkdownContent.astro";
 import Footer from "$/layouts/Footer.astro";
@@ -8,7 +8,7 @@ import JobTitles from "$/components/jobs/JobTitles.astro";
 export async function getStaticPaths() {
   const positions = await getCollection("resume");
   return positions.map((position) => ({
-    params: { slug: position.slug },
+    params: { slug: position.id },
     props: position,
   }));
 }
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"resume">;
 
 const position = Astro.props;
-const { Content } = await position.render();
+const { Content } = await render(position);
 
 const { titles, sector, techs, skills } = position.data;
 
@@ -83,5 +83,5 @@ const offTitleStyle = {
       </MarkdownContent>
     </div>
   </div>
-  <Footer class="mb-12 mt-20" />
+  <Footer class="mb-20" />
 </MainLayout>

@@ -4,7 +4,7 @@ import GitHubIcon from "$/components/icons/GitHubIcon.astro";
 import LinkedInIcon from "$/components/icons/LinkedInIcon.astro";
 import LocationIcon from "$/components/icons/LocationIcon.astro";
 import WebIcon from "$/components/icons/WebIcon.astro";
-import Link from "$/components/resume/Link.astro";
+import ResumeLink from "$/components/resume/ResumeLink.astro";
 import Role from "$/components/resume/Role.astro";
 import ListInline from "$/components/resume/ListInline.astro";
 import ListInfo from "$/components/resume/ListInfo.astro";
@@ -102,23 +102,23 @@ import { cfg } from "./pdf-config.local";
       </div>
       <div class="w-1/3 pt-2">
         <ul class="links-list">
-          {cfg.meta.location && <Link icon={LocationIcon} text={cfg.meta.location} />}
+          {cfg.meta.location && <ResumeLink icon={LocationIcon} text={cfg.meta.location} />}
           {
             cfg.meta.github && (
-              <Link icon={GitHubIcon} text={cfg.meta.github.text} href={cfg.meta.github.href} />
+              <ResumeLink icon={GitHubIcon} text={cfg.meta.github.text} href={cfg.meta.github.href} />
             )
           }
           {
             cfg.meta.linkedin && (
-              <Link icon={LinkedInIcon} text={cfg.meta.linkedin.text} href={cfg.meta.linkedin.href} />
+              <ResumeLink icon={LinkedInIcon} text={cfg.meta.linkedin.text} href={cfg.meta.linkedin.href} />
             )
           }
           {
             cfg.meta.website && (
-              <Link icon={WebIcon} text={cfg.meta.website.text} href={cfg.meta.website.href} />
+              <ResumeLink icon={WebIcon} text={cfg.meta.website.text} href={cfg.meta.website.href} />
             )
           }
-          {cfg.meta.email && <Link icon={EmailIcon} text={cfg.meta.email.text} href={cfg.meta.email.href} />}
+          {cfg.meta.email && <ResumeLink icon={EmailIcon} text={cfg.meta.email.text} href={cfg.meta.email.href} />}
         </ul>
       </div>
     </div>

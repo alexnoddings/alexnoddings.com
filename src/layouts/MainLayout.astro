@@ -1,67 +1,74 @@
 ---
-import BaseHead from "$/layouts/Head.astro";
+import Head from "$/layouts/Head.astro";
+
+type Props = {
+  title?: string
+};
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <BaseHead />
-  </head>
-  <body class="relative m-0 min-h-screen bg-violet p-0 font-body text-base text-smoke">
-    <div id="bg-dotted"></div>
-    <div class="mx-auto max-w-screen-xl px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16">
-      <slot />
-    </div>
-    <style is:global>
-      @reference "$/styles/site.css";
-      #bg-dotted {
+<head>
+  <Head title={title} />
+</head>
+<body class="relative m-0 min-h-screen bg-violet p-0 font-body text-base text-smoke">
+<div id="bg-dotted"></div>
+<div class="mx-auto max-w-screen-xl px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16">
+  <slot />
+</div>
+<script>
+  const bg = document.querySelector("#bg-dotted") as HTMLDivElement;
+  if (!!bg) {
+    window.addEventListener("mousemove", (e) => {
+      bg.style.setProperty("--bg-cover-x", e.clientX + "px");
+      bg.style.setProperty("--bg-cover-y", e.clientY + "px");
+    });
+  }
+</script>
+</body>
+</html>
+
+<style>
+    @reference "$/styles/site.css";
+    #bg-dotted {
         @apply fixed inset-0 -z-20;
         @apply bg-violet;
         background-image: radial-gradient(
-            farthest-corner circle at var(--bg-cover-x, -50vw) var(--bg-cover-y, -50vh),
-            transparent 100px,
-            #111428cc 180px
-          ),
-          radial-gradient(#95a5b5ff 1px, transparent 0), radial-gradient(#95a5b566 1px, transparent 0);
-        background-size:
-          100% 100%,
-          40px 40px,
-          40px 40px;
-        background-position:
-          0px 0px,
-          20px 20px,
-          0 0;
-      }
+                farthest-corner circle at var(--bg-cover-x, -50vw) var(--bg-cover-y, -50vh),
+                transparent 100px,
+                #111428cc 180px
+        ),
+        radial-gradient(#95a5b5ff 1px, transparent 0), radial-gradient(#95a5b566 1px, transparent 0);
+        background-size: 100% 100%,
+        40px 40px,
+        40px 40px;
+        background-position: 0px 0px,
+        20px 20px,
+        0 0;
+    }
 
-      @media (prefers-reduced-motion) {
+    @media (prefers-reduced-motion) {
         #bg-dotted {
-          background-image: radial-gradient(transparent 0, #111428cc 0),
+            background-image: radial-gradient(transparent 0, #111428cc 0),
             radial-gradient(#95a5b5ff 1px, transparent 0), radial-gradient(#95a5b566 1px, transparent 0);
         }
-      }
+    }
 
-      @media (prefers-contrast: more) {
+    @media (prefers-contrast: more) {
         a,
         .link-text {
-          @apply underline;
+            @apply underline;
         }
+
         a:hover,
         .link-text:hover {
-          @apply bg-none text-mist decoration-thick;
+            @apply bg-none text-mist decoration-thick;
         }
+
         a.link-not-text {
-          @apply no-underline;
+            @apply no-underline;
         }
-      }
-    </style>
-    <script>
-      const bg = document.querySelector("#bg-dotted") as HTMLDivElement;
-      if (!!bg) {
-        window.addEventListener("mousemove", (e) => {
-          bg.style.setProperty("--bg-cover-x", e.clientX + "px");
-          bg.style.setProperty("--bg-cover-y", e.clientY + "px");
-        });
-      }
-    </script>
-  </body>
-</html>
+    }
+</style>

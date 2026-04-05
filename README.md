@@ -1,7 +1,11 @@
 ![site logo](public/meta/android-chrome-192x192.png)
 
 # [alexnoddings.com](https://alexnoddings.com)
-My personal static website, built with [Astro](https://astro.build/) and [Tailwind](https://tailwindcss.com/).
+My personal static website, built with [Astro](https://astro.build/), [Tailwind](https://tailwindcss.com/), and Markdown.
 
-### Running locally
-The site can be ran locally by executing `npm run dev` in the root directory. This runs the site in dev mode.
+## Running
+
+- `npm install` installs dependencies
+- `npm run dev` starts a local dev server at `localhost:4321`
+- `npm run build` build the production site to `./dist/`
+- `npm run preview` previews the build locally

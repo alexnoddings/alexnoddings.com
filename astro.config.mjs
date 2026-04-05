@@ -9,6 +9,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://alexnoddings.com",
   integrations: [mdx(), sitemap()],
+  prefetch: {
+    prefetchAll: true
+  },
   fonts: [
     {
       provider: fontProviders.fontsource(),

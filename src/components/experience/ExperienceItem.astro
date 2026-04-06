@@ -1,0 +1,49 @@
+---
+import type { Experience } from "$/experience.ts";
+import ExperienceTitles from "$/components/experience/ExperienceTitles.astro";
+
+interface Props {
+  experience: Experience;
+}
+
+const { experience } = Astro.props;
+---
+
+<div class="experience group/experience">
+  <div class="w-fit">
+    <ExperienceTitles experience={experience} />
+    <div class="border-smoke/20 mt-1 border-t-2 md:col-span-5 md:col-start-1">
+      <ul class="experience-summary flex flex-col gap-1 pt-1 pb-2" role="list">
+        {experience.summaries.map((summary) => <li>{summary}</li>)}
+      </ul>
+      <ul class="techs" role="list">
+        {experience.techs.map((tech) => <li>{tech}</li>)}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  @reference "$/styles/site.css";
+
+  .experience {
+    @apply relative block rounded-md px-6 py-5;
+    @apply transition-colors;
+    @apply hover:bg-lavender/5 hover:opacity-100!;
+    @apply group-hover/experience:opacity-50;
+    @apply motion-reduce:group-hover/experience:opacity-100;
+
+    .experience-summary li::before {
+      content: "‣";
+      @apply mr-1;
+    }
+
+    .techs {
+      @apply flex flex-row flex-wrap gap-2;
+
+      li {
+        @apply bg-lavender/10 text-lavender rounded-full px-2 py-1 text-xs;
+      }
+    }
+  }
+</style>

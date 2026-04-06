@@ -1,0 +1,79 @@
+---
+import type { Experience } from "$/experience.ts";
+
+interface Props {
+  experience: Experience;
+}
+
+const { experience } = Astro.props;
+---
+
+
+<div class="titles">
+  {experience.titles.map((title) => {
+    const main = title == experience.titles[0] ? "title--main" : "title--past";
+    return (<>
+      {
+        title.period ? (
+          <span class:list={["title__period", main]}>{title.period}</span>
+        ) : (
+          <>
+            <span class:list={["title__start", main]}>{title.start}</span>
+            <span class:list={["title__time-divider", main]}>—</span>
+            <span class:list={["title__end", main]}>{title.end}</span>
+          </>
+        )
+      }
+      <span class:list={["title__text", main]}>{title.name}</span>
+    </>);
+  })}
+</div>
+
+<style>
+  @reference "$/styles/site.css";
+
+  .titles {
+    @apply grid;
+    grid-template-columns: [start]max-content [time-divider]max-content [end]max-content [text]auto;
+    @apply gap-x-1;
+
+    .title__start {
+      @apply block;
+      @apply text-smoke text-sm;
+      @apply text-end;
+      grid-column: start;
+    }
+    .title__time-divider {
+      @apply block;
+      @apply text-smoke text-sm;
+      @apply text-center;
+      grid-column: time-divider;
+
+    }
+    .title__end {
+      @apply block;
+      @apply text-smoke text-sm;
+      @apply text-start;
+      grid-column: end;
+    }
+    .title__period {
+      @apply block;
+      @apply text-smoke text-sm;
+      grid-column-start: start;
+      grid-column-end: text;
+    }
+    .title__text {
+      @apply block ps-3;
+      @apply text-smoke text-sm;
+      grid-column: text;
+    }
+
+    .title--past {
+      @apply text-smoke text-sm;
+    }
+
+    .title--main {
+      @apply text-mist text-base font-header font-semibold;
+    }
+  }
+</style>

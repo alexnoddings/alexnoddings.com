@@ -10,10 +10,10 @@ const { experience } = Astro.props;
 ---
 
 <div class="experience group/experience">
-  <div class="w-fit">
+  <div class="experience__content">
     <ExperienceTitles experience={experience} />
     <div class="border-smoke/20 mt-1 border-t-2 md:col-span-5 md:col-start-1">
-      <ul class="experience-summary flex flex-col gap-1 pt-1 pb-2" role="list">
+      <ul class="experience__summary flex flex-col gap-1 pt-1 pb-2" role="list">
         {experience.summaries.map((summary) => <li>{summary}</li>)}
       </ul>
       <ul class="techs" role="list">
@@ -33,7 +33,25 @@ const { experience } = Astro.props;
     @apply group-hover/experience:opacity-50;
     @apply motion-reduce:group-hover/experience:opacity-100;
 
-    .experience-summary li::before {
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: " ";
+      width: 100%;
+      height: 100%;
+      opacity: 67%;
+      @apply transition-colors;
+    }
+    &:hover::before {
+      @apply bg-violet;
+    }
+
+    .experience__content {
+      position: relative;
+    }
+
+    .experience__summary li::before {
       content: "‣";
       @apply mr-1;
     }

@@ -1,0 +1,30 @@
+---
+import ArchLabel from "$/components/projects/ArchLabel.astro";
+import UserIcon from "$/components/icons/UserIcon.astro";
+type Props = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  label: string;
+  fontSize: number;
+};
+
+const { x, y, w, h, label, fontSize } = Astro.props;
+---
+
+<g transform={`translate(${x}, ${y})`}>
+  <g stroke="var(--color-arch-green)" fill="var(--color-arch-bg)">
+    <rect x={0} y={0} width={w} height={h} fill="var(--color-arch-green-bg)" />
+    <rect x={-3} y={-3} width={8} height={8}/>
+    <rect x={w-5} y={-3} width={8} height={8}/>
+    <rect x={-3} y={h-5} width={8} height={8}/>
+    <rect x={w-5} y={h-5} width={8} height={8}/>
+  </g>
+  <g fill="var(--color-arch-green)">
+    <UserIcon x={w*0.15} y={h*0.15} width={w*0.7} height={h*0.7}/>
+    <ArchLabel x={w / 2} y={h + 24} fontSize={fontSize}>
+      {label}
+    </ArchLabel>
+  </g>
+</g>

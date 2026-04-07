@@ -1,0 +1,13 @@
+---
+type Props = {
+  x: number;
+  y: number;
+  fontSize: number;
+}
+
+const { x, y, fontSize } = Astro.props;
+---
+
+<text x={x} y={y} font-size={fontSize} text-anchor="middle">
+  <slot/>
+</text>

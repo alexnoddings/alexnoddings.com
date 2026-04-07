@@ -1,0 +1,39 @@
+---
+id: "tyne"
+order: 4
+title: "Tyne"
+icon: "/projects/tyne/project.svg"
+theme: "2B333AAB"
+tags: ["C#", ".NET", "Blazor", "HTML", "ASP.NET Core", "NuGet", "GitHub Actions"]
+summary: ["C# package libraries designed to make line-of-business apps in Blazor more efficiently."]
+on: "NuGet"
+links: [
+  { href: "https://alexn.dev/tyne/github", text: "GitHub" },
+  { href: "https://alexn.dev/tyne/demo", text: "Demo" },
+  { href: "https://alexn.dev/tyne/docs", text: "Docs" },
+  { href: "https://www.nuget.org/packages/Tyne.Core/4.0.0-rc1", text: "Core NuGet" },
+  { href: "https://www.nuget.org/packages/Tyne.Blazor/4.0.0-rc1", text: "Blazor NuGet" }
+]
+---
+
+# Summary
+
+Tyne is a set of C# packages designed to make line-of-business apps in Blazor more efficiently.
+
+The libraries power multiple large systems at a previous job,
+and went through 4 major versions as requirements evolved.
+Development was moved closed-source after I left.
+
+# Tyne.Core
+
+The Core library is inspired by functional programming,
+and included the `Result<T, E>` and `Unit` types to support
+[Railway Oriented Programming](https://fsharpforfunandprofit.com/rop/)
+techniques to make handling errors in system more explicit and clean.
+
+# Tyne.Blazor
+
+The Blazor library contains a variety of Razor components.
+
+It is mainly centered around advanced filtering and forms, as the systems
+we were designing at that job had complex business requirements for admin pages.

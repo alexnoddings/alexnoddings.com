@@ -1,0 +1,74 @@
+---
+type Props = {
+  viewBox: string;
+  maxWidth: string;
+}
+
+const { viewBox, maxWidth } = Astro.props;
+---
+
+<div class="architecture" style={`max-width: ${maxWidth}`}>
+  <div class="background">
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner bl"></span>
+    <span class="corner br"></span>
+  </div>
+  <svg class="content" viewBox={viewBox}>
+    <slot />
+  </svg>
+</div>
+
+<style>
+  @reference "$/styles/site.css";
+
+  .architecture {
+    @apply relative;
+    @apply p-2;
+
+    .background {
+      position: absolute;
+      inset: 8px;
+      border: 1px solid var(--color-arch-border);
+      background: var(--color-arch-bg);
+      background-image: radial-gradient(#F0E3DD22 1px,transparent 0);
+      background-size: 24px 24px;
+      background-position: 0 0;
+
+      .corner {
+        position: absolute;
+        content: " ";
+        width: 12px;
+        height: 12px;
+        background: var(--color-arch-bg);
+        border: 1px solid var(--color-arch-border);
+        border-radius: 4px;
+
+        &.tl {
+          top: -6px;
+          left: -6px;
+        }
+
+        &.tr {
+          top: -6px;
+          right: -6px;
+        }
+
+        &.bl {
+          bottom: -6px;
+          left: -6px;
+        }
+
+        &.br {
+          bottom: -6px;
+          right: -6px;
+        }
+      }
+    }
+
+    .content {
+      position: relative;
+      @apply font-mono;
+    }
+  }
+</style>

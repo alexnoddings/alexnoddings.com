@@ -1,0 +1,44 @@
+---
+id: "aka"
+order: 1
+title: "aka"
+icon: "/projects/aka/project.svg"
+theme: "F4A4403A"
+tags: ["SvelteKit", "Cloudflare Workers", "Cloudflare D1", "TypeScript", "Tailwind CSS"]
+summary: [
+  "My personal link vanity/shortening service.",
+  "Runs on Cloudflare Workers/D1, with a SvelteKit admin site."
+]
+on: "CloudflareWorkers"
+links: [
+  { href: "https://alexn.dev/aka/github", text: "GitHub" }
+]
+---
+
+# Summary
+
+`aka` is my personal link shortening/vanity service.
+
+import AkaArchitecture from "$/content/projects/AkaArchitecture.astro";
+
+<AkaArchitecture/>
+
+## Main site
+Users interact with the main site which runs on Cloudflare Serverless Workers.
+It redirects users based on the path they are accessing.
+
+## Admin site
+Admins create/update links via a SvelteKit application which runs on Cloudflare Serverless Workers.
+This is protected by Cloudflare One.
+
+## Database
+Both Worker applications use a Cloudflare D1 Serverless database for data storage.
+
+# Admin site screenshots
+
+Home page
+<img alt="aka admin site home page" src="/projects/aka/admin-home.png" width="600px" />
+
+Links page
+<img alt="aka admin site links page" src="/projects/aka/admin-links.png" width="600px" />
+

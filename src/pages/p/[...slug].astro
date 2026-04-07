@@ -1,0 +1,242 @@
+---
+import MainLayout from "$/layouts/MainLayout.astro";
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import ArrowLeftIcon from "$/components/icons/ArrowLeftIcon.astro";
+import Footer from "$/layouts/Footer.astro";
+import GitHubIcon from "$/components/icons/GitHubIcon.astro";
+import LinkExternalIcon from "$/components/icons/LinkExternalIcon.astro";
+import CloudflareWorkersIcon from "$/components/icons/brands/CloudflareWorkersIcon.astro";
+import NuGetOrgIcon from "$/components/icons/brands/NuGetOrgIcon.astro";
+import ContainerIcon from "$/components/icons/brands/ContainerIcon.astro";
+import WrenchIcon from "$/components/icons/WrenchIcon.astro";
+import ServerIcon from "$/components/icons/ServerIcon.astro";
+import MoveToBottomIcon from "$/components/icons/MoveToBottomIcon.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("projects");
+  return posts.map((project) => ({
+    params: { slug: project.data.id },
+    props: project,
+  }));
+}
+type Props = CollectionEntry<"projects">;
+
+const project = Astro.props;
+const { Content, headings } = await render(project);
+---
+
+<MainLayout title={project.data.title}>
+  <div class="project" style={{ "--project-theme": "#" + project.data.theme }}>
+    <div class="flex">
+      <a href="/" class="back">
+        <span class="arrow">
+          <ArrowLeftIcon width={32} height={32} />
+        </span>
+        Alex Noddings
+      </a>
+    </div>
+    <div class="project__header">
+      {(<img class="project__icon" alt=" " aria-hidden="true" src={project.data.icon} />)}
+      <h1>
+        {project.data.title}
+      </h1>
+    </div>
+    <div class="project__container">
+      <div class="frontmatter">
+        <span class="frontmatter__icon">
+          <WrenchIcon width={16} height={16} />
+        </span>
+        <h2 class="frontmatter__title">Uses</h2>
+        <ul class="frontmatter__content">
+          {
+            project.data.tags.map((tag) => (
+              <li class="frontmatter__pill bg-lavender/10 text-lavender">{tag}</li>
+            ))
+          }
+        </ul>
+        <span class="frontmatter__icon">
+          <ServerIcon width={16} height={16} />
+        </span>
+        <h2 class="frontmatter__title">On</h2>
+        <ul class="frontmatter__content">
+          {
+            project.data.on === "CloudflareWorkers" ? (
+              <span class="frontmatter__pill bg-[#f14602]/10 text-[#ff4900]">
+                <CloudflareWorkersIcon width={24} /> Cloudflare Workers
+              </span>
+            ) : project.data.on === "GitHubPages" ? (
+              <span class="frontmatter__pill bg-[#6639ba]/20 text-[#bb97ff]">
+                <GitHubIcon width={24} class="fill-mist" /> GitHub Pages
+              </span>
+            ) : project.data.on === "NuGet" ? (
+              <span class="frontmatter__pill bg-[#004681]/10 text-[#0091FF]">
+                <NuGetOrgIcon width={24} /> NuGet
+              </span>
+            ) : project.data.on === "SelfHostDocker" ? (
+              <span class="frontmatter__pill bg-[#1763ee]/10 text-[#4989ff]">
+                <ContainerIcon width={22} class="me-1 fill-[#4989ff]" /> Self hosted
+              </span>
+            ) : (
+              <>{project.data.on}</>
+            )
+          }
+        </ul>
+        <span class="frontmatter__icon">
+          <LinkExternalIcon width={16} height={16} />
+        </span>
+        <h2 class="frontmatter__title">Links</h2>
+        <ul class="frontmatter__content">
+          {
+            project.data.links.map((link) => (
+              <li>
+                <a href={link.href} class="frontmatter__link frontmatter__pill bg-orchid/10 text-orchid underline decoration-orchid">
+                  {link.text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <span class="frontmatter__icon">
+          <MoveToBottomIcon width={16} height={16} />
+        </span>
+        <h2 class="frontmatter__title">Jump to</h2>
+        <ul class="frontmatter__content">
+          {
+            headings
+              .filter((h) => h.depth == 2)
+              .map((heading) => (
+                <a href={`#${heading.slug}`} class="frontmatter__link frontmatter__pill bg-turquoise/10 text-turquoise underline decoration-turquoise">
+                  {heading.text}
+                </a>
+              ))
+          }
+        </ul>
+      </div>
+      <div class="project-divider"></div>
+      <div class="project-markdown">
+        <Content />
+      </div>
+    </div>
+  </div>
+  <Footer class="mb-20" />
+</MainLayout>
+
+<style>
+  @reference "$/styles/site.css";
+
+  .project {
+    @apply mx-auto mt-12 mb-6 max-w-prose lg:my-20;
+  }
+
+  .back {
+    @apply flex items-center;
+    @apply py-3 pe-3 text-lg;
+    @apply transition-colors;
+    @apply text-gradient-r from-lavender to-orchid hover:from-orchid hover:to-lavender;
+
+    .arrow {
+      @apply fill-lavender;
+      @apply me-1;
+      @apply transition-transform;
+    }
+
+    &:hover .arrow {
+      @apply fill-orchid;
+      @apply -translate-x-1.5 motion-reduce:translate-x-0;
+    }
+  }
+
+  .project__header {
+    @apply flex flex-row items-center gap-3;
+    @apply text-mist font-header text-3xl font-medium;
+    background-color: var(--project-theme);
+    @apply rounded-xl;
+    @apply px-3 py-1;
+
+    .project__icon {
+      width: 52px;
+      height: 52px;
+    }
+  }
+
+  .project__container {
+    @apply bg-violet/50 rounded-xl;
+    @apply mt-1 p-3;
+
+    .frontmatter {
+      display: grid;
+      grid-template-columns: [icon]max-content [title]max-content [content]auto;
+      @apply gap-2;
+
+      .frontmatter__icon {
+        @apply flex items-center justify-center;
+        grid-column: icon;
+        @apply fill-mist;
+      }
+
+      .frontmatter__title {
+        grid-column: title;
+        @apply text-mist flex items-center;
+      }
+
+      .frontmatter__content {
+        grid-column: content;
+        @apply flex flex-row flex-wrap gap-2;
+      }
+
+      .frontmatter__pill {
+        @apply rounded-full px-2 py-0.5;
+        @apply flex flex-row items-center gap-1;
+
+        &.frontmatter__link:hover {
+          @apply outline-2;
+          outline-color: currentColor;
+        }
+      }
+    }
+  }
+
+  .project-divider {
+    height: 6px;
+    background: var(--project-theme);
+    @apply rounded-full mt-4 -mx-3;
+  }
+</style>
+
+<style is:global>
+  @reference "$/styles/site.css";
+
+  .project-markdown {
+    h2 {
+      @apply font-header text-mist mt-3 text-lg;
+    }
+    h3 {
+      @apply text-mist mt-4;
+    }
+
+    p {
+      @apply my-1;
+    }
+
+    a {
+      @apply text-mist decoration-smoke underline;
+    }
+
+    ul {
+      @apply flex flex-col gap-1 pl-2;
+    }
+    li::before {
+      content: "·";
+      @apply text-mist mr-1;
+    }
+
+    code {
+      @apply font-mono;
+    }
+
+    img {
+      @apply border-2 border-violet;
+      @apply my-1.5;
+    }
+  }
+</style>

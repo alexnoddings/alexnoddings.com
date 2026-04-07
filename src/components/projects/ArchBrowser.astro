@@ -1,0 +1,24 @@
+---
+type Props = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  colour: string;
+};
+
+const { x, y, w, h, colour } = Astro.props;
+---
+
+<g transform={`translate(${x}, ${y})`}>
+  <g stroke="#686664" fill="#191715">
+    <rect x="0" y="0" width={w} height={h} rx="6" ry="6"></rect>
+    <circle cx="10" cy="10" r="3"></circle>
+    <circle cx="20" cy="10" r="3"></circle>
+    <circle cx="30" cy="10" r="3"></circle>
+    <line x1="0" y1="20" x2={w} y2="20"></line>
+  </g>
+  <g fill={colour}>
+    <slot />
+  </g>
+</g>

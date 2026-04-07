@@ -12,6 +12,19 @@
 	--color-flamingo: #FA9AA2;
 	--color-turquoise: #55CEDA;
 
+    --color-arch-bg: #191715;
+    --color-arch-border: #353331;
+    --color-arch-green: #5FFF3F;
+    --color-arch-green-bg: #23361A;
+    --color-arch-blue: #4BB8FF;
+    --color-arch-blue-bg: #113344;
+    --color-arch-pink: #FF5EF5;
+    --color-arch-pink-bg: #441441;
+    --color-arch-orange: #F8811F;
+    --color-arch-orange-bg: #442C14;
+    --color-arch-white: #FFEFDF;
+    --color-arch-white-bg: #47443E;
+
     --font-header: var(--font-header);
     --font-body: var(--font-body);
     --font-mono: var(--font-mono);

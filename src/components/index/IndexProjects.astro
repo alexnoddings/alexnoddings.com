@@ -1,60 +1,33 @@
 ---
 import ProjectItem from "$/components/ProjectItem.astro";
+
+import { getCollection } from "astro:content";
+
+const projects =
+  (await getCollection("projects"))
+    .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section id="personal-projects" class="pt-10 lg:pt-16">
-  <h2 class="font-header font-medium text-mist mb-2 text-lg">Personal projects</h2>
-  <p>
-    None of these were generated with AI.
-  </p>
+  <h2 class="font-header text-mist mb-2 text-lg font-medium">Personal projects</h2>
+  <p>None of these were generated with AI.</p>
   <p>
     I don't hate the technology (I use it extensively professionally),
-    but my personal projects are about learning something new, creative expression,
-    and showing off my own skills.
+    but my personal projects are about learning, creative expression, and showcasing my skills.
   </p>
   <ol class="group/projects mt-4 flex flex-col">
-    <li>
-      <ProjectItem
-        title="alexnoddings.com"
-        techs={["Astro", "Tailwind", "HTML/CSS"]}
-        href="https://github.com/alexnoddings/alexnoddings.com/"
-        bg="#9880E80A"
-      >
-        This website! Part résumé, part portfolio, part CV generator. Created with Astro and Tailwind CSS.
-      </ProjectItem>
-    </li>
-    <li>
-      <ProjectItem
-        title="impulse TTRPG"
-        techs={["Astro", "Tailwind", "HTML/CSS"]}
-        href="https://github.com/alexnoddings/impulse-ttrpg/"
-        bg="#D86E6810"
-      >
-        A homebrew, loose, simplified TTRPG framework inspired by improv the idea of "yes, and", and designed
-        for one-shot campaigns. Not tech itself, but it's interesting and comes with a website I designed.
-        Check it out - it's free&trade;!
-      </ProjectItem>
-    </li>
-    <li>
-      <ProjectItem
-        title="Tyne"
-        techs={[".NET", "Blazor WASM", "HTML", "ASP.NET Core", "Entity Framework Core", "NuGet"]}
-        href="https://github.com/alexnoddings/Tyne"
-        bg="#0F161C50"
-      >
-        A set of C# packages designed to make line-of-business apps in Blazor more efficiently.
-      </ProjectItem>
-    </li>
-    <li>
-      <ProjectItem
-        title="Quibble"
-        techs={[".NET", "Blazor WASM", "SignalR", "ASP.NET Core", "Entity Framework Core", "Docker"]}
-        href="https://github.com/alexnoddings/Quibble"
-        bg="#28232D40"
-      >
-        Interactive real-time quiz website using Blazor and SignalR. Built and used during Covid for game
-        nights with friends, and resurrected once in a blue moon since.
-      </ProjectItem>
-    </li>
+    {
+      projects.map((project) => (
+        <li>
+          <ProjectItem
+            id={project.data.id}
+            title={project.data.title}
+            icon={project.data.icon}
+            techs={project.data.tags}
+            theme={project.data.theme}
+            summary={project.data.summary}/>
+        </li>
+      ))
+    }
   </ol>
 </section>

@@ -1,0 +1,53 @@
+---
+import Architecture from "$/components/projects/Architecture.astro";
+import ArchUser from "$/components/projects/ArchUser.astro";
+import ArchLabel from "$/components/projects/ArchLabel.astro";
+import ArchEntity from "$/components/projects/ArchEntity.astro";
+import ArchBrowser from "$/components/projects/ArchBrowser.astro";
+import ArchLink from "$/components/projects/ArchLink.astro";
+import SvelteIcon from "$/components/icons/brands/SvelteIcon.astro";
+import CloudflareComputeWorkersIcon from "$/components/icons/brands/CloudflareComputeWorkersIcon.astro";
+import CloudflareComputeD1Icon from "$/components/icons/brands/CloudflareComputeD1Icon.astro";
+import CloudflareOneIcon from "$/components/icons/brands/CloudflareOneIcon.astro";
+---
+
+<Architecture viewBox="-50 -50 810 500" maxWidth="650px">
+  <ArchLink x1="120" y1="50" x2="380" y2="50" />
+  <ArchLink x1="520" y1="50" x2="580" y2="50" />
+
+  <ArchLink x1="120" y1="300" x2="180" y2="300" />
+  <ArchLink x1="320" y1="300" x2="380" y2="300" />
+  <ArchLink x1="520" y1="300" x2="580" y2="300" />
+
+  <ArchLink x1="650" y1="155" x2="650" y2="230" />
+
+  <ArchUser x={0} y={0} w={100} h={100} label="Users" fontSize={16}/>
+  <ArchEntity x={400} y={0} w={100} h={100} fill="var(--color-arch-blue-bg)" stroke="var(--color-arch-blue)">
+    <CloudflareComputeWorkersIcon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>Cloudflare</ArchLabel>
+    <ArchLabel x={50} y={140} fontSize={16}>Workers</ArchLabel>
+  </ArchEntity>
+
+  <ArchUser x={0} y={250} w={100} h={100} label="Admins" fontSize={16}/>
+  <ArchEntity x={200} y={250} w={100} h={100} fill="var(--color-arch-orange-bg)" stroke="var(--color-arch-orange)">
+    <CloudflareOneIcon x="20" y="20" width="60" height="60"/>
+    <ArchLabel x="50" y="120" fontSize={16}>Cloudflare One</ArchLabel>
+    <ArchLabel x="50" y="140" fontSize={16}>Access Control</ArchLabel>
+  </ArchEntity>
+  <ArchBrowser x={400} y={250} w={100} h={100} colour="#FF3F00">
+    <SvelteIcon x={25} y={35} width={50} height={50}/>
+    <ArchLabel x="50" y="120" fontSize={16}>SvelteKit</ArchLabel>
+    <ArchLabel x="50" y="140" fontSize={16}>Admin Site</ArchLabel>
+  </ArchBrowser>
+  <ArchEntity x={600} y={250} w={100} h={100} fill="var(--color-arch-blue-bg)" stroke="var(--color-arch-blue)">
+    <CloudflareComputeWorkersIcon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>Cloudflare</ArchLabel>
+    <ArchLabel x={50} y={140} fontSize={16}>Workers API</ArchLabel>
+  </ArchEntity>
+
+  <ArchEntity x={600} y={0} w={100} h={100} fill="var(--color-arch-pink-bg)" stroke="var(--color-arch-pink)">
+    <CloudflareComputeD1Icon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>Cloudflare</ArchLabel>
+    <ArchLabel x={50} y={140} fontSize={16}>D1 Serverless SQL</ArchLabel>
+  </ArchEntity>
+</Architecture>

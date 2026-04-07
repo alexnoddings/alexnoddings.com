@@ -33,5 +33,21 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+  markdown: {
+    remarkPlugins: [incrementHeadingsPlugin],
+  },
 });
+
+function incrementHeadingsPlugin() {
+  return incrementHeadings;
+}
+function incrementHeadings(tree, _) {
+  // Increment heading depths by one to allow Markdown file headings to start at #
+  // We only want one h1 on a page (provided by Astro), everything else should be h2 or lower
+  for (const treeElement of tree.children) {
+    if (treeElement.type === "heading" && !!treeElement.depth) {
+      treeElement.depth = treeElement.depth + 1;
+    }
+  }
+}

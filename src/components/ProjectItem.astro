@@ -1,40 +1,97 @@
 ---
 import GitHubIcon from "$/components/icons/GitHubIcon.astro";
+import ChevronRightIcon from "$/components/icons/ChevronRightIcon.astro";
 
 interface Props {
+  id: string;
   title: string;
+  icon: string;
   techs: string[];
-  href: string;
-  bg: string;
+  theme: string;
+  summary: string[];
 }
 
-const { title, techs, href, bg, ...props } = Astro.props;
+const { id, title, icon, techs, theme, summary } = Astro.props;
+const themeStyle = `--project-theme: #${theme}`;
+const href = `/p/${id}`;
 ---
 
-<a
-  href={href}
-  class="link-not-text group/project-item flex flex-col gap-2 rounded-md px-6 py-5 transition-all hover:bg-lavender/5 hover:!opacity-100 group-hover/projects:opacity-50 motion-reduce:group-hover/projects:opacity-100"
-  {...props}
->
-  <div class="flex flex-row gap-2 font-header font-semibold">
-    <div class="link-text flex-1 text-mist">
-      {title}
+<a href={href} class="project-wrapper group/project-item" style={themeStyle}>
+  <div class="project">
+    <div class="font-header flex flex-row gap-2 font-semibold">
+      {<img class="project__icon" alt=" " aria-hidden="true" src={icon} />}
+      <div class="link-text text-mist flex-1">
+        {title}
+      </div>
+      <span class="project__more-info">
+        More info
+        <ChevronRightIcon class="fill-smoke group-hover/project-item:fill-orchid" width={16} height={16} />
+      </span>
     </div>
-    <span
-      class="flex items-center gap-1 px-2 py-0.5 transition-transform group-hover/project-item:translate-x-1 group-hover/project-item:text-orchid motion-reduce:group-hover/project-item:translate-x-0"
-    >
-      <GitHubIcon class="fill-smoke group-hover/project-item:fill-orchid" width={18} height={18} />
-      <span>↗</span>
-    </span>
+    <div class="project__summary">
+      {summary.map(s => <p>{s}</p>)}
+    </div>
+    <ul class="flex flex-row flex-wrap gap-2" role="list">
+      {
+        techs.map((tech) => (
+          <li class="bg-lavender/10 text-lavender rounded-full px-2 py-1 text-xs">{tech}</li>
+        ))
+      }
+    </ul>
   </div>
-  <slot />
-  <ul class="flex flex-row flex-wrap gap-2" role="list">
-    {techs.map((tech) => <li class="rounded-full bg-lavender/10 px-2 py-1 text-xs text-lavender">{tech}</li>)}
-  </ul>
 </a>
 
-<style define:vars={{ bg }}>
-  a:hover {
-    background-color: var(--bg);
+<style>
+  @reference "$/styles/site.css";
+
+  .project-wrapper {
+    position: relative;
+    @apply block rounded-md px-6 py-5;
+    @apply hover:bg-lavender/5 transition-all group-hover/projects:opacity-50 hover:opacity-100! motion-reduce:group-hover/projects:opacity-100;
+
+    &:hover {
+      background-color: var(--project-theme);
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: " ";
+      opacity: 67%;
+      @apply transition-colors;
+    }
+    &:hover::before {
+      @apply bg-violet;
+    }
+  }
+
+  .project {
+    @apply relative;
+    @apply flex flex-col;
+
+    .project__icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .project__more-info {
+      @apply flex items-center gap-1 transition-transform;
+      @apply group-hover/project-item:text-orchid;
+      @apply group-hover/project-item:translate-x-1 motion-reduce:group-hover/project-item:translate-x-0;
+      @apply group-hover/project-item:-translate-y-0.5 motion-reduce:group-hover/project-item:translate-y-0;
+    }
+
+    .project__summary {
+      @apply mb-2;
+    }
+  }
+
+  .project:hover {
+    .project__icon::before {
+      background-color: var(--project-theme);
+    }
   }
 </style>

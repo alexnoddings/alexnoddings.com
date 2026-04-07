@@ -1,0 +1,29 @@
+---
+import Architecture from "$/components/projects/Architecture.astro";
+import ArchUser from "$/components/projects/ArchUser.astro";
+import ArchLabel from "$/components/projects/ArchLabel.astro";
+import ArchEntity from "$/components/projects/ArchEntity.astro";
+import ArchBrowser from "$/components/projects/ArchBrowser.astro";
+import ArchLink from "$/components/projects/ArchLink.astro";
+import AstroIcon from "$/components/icons/brands/AstroIcon.astro";
+import GitHubIcon from "$/components/icons/GitHubIcon.astro";
+---
+
+<Architecture viewBox="-50 -50 600 250" maxWidth="500px">
+  <ArchLink x1="120" y1="50" x2="180" y2="50" />
+  <ArchLink x1="320" y1="50" x2="380" y2="50" />
+
+  <ArchUser x={0} y={0} w={100} h={100} label="Users" fontSize={16}/>
+
+  <ArchBrowser x={200} y={0} w={100} h={100} colour="#E03876">
+    <AstroIcon x="25" y="35" width={50} height={50}/>
+    <ArchLabel x="50" y="120" fontSize={16}>Astro</ArchLabel>
+    <ArchLabel x="50" y="140" fontSize={16}>Static Site</ArchLabel>
+  </ArchBrowser>
+
+  <ArchEntity x={400} y={0} w={100} h={100} fill="var(--color-arch-white-bg)" stroke="var(--color-arch-white)">
+    <GitHubIcon x="25" y="25" width={50} height={50}/>
+    <ArchLabel x={50} y={120} fontSize={16}>GitHub</ArchLabel>
+    <ArchLabel x={50} y={140} fontSize={16}>Pages</ArchLabel>
+  </ArchEntity>
+</Architecture>

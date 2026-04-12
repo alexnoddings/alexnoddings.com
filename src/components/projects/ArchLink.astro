@@ -4,9 +4,10 @@ type Props = {
   y1: number;
   x2: number;
   y2: number;
+  width?: number;
 }
 
-const { x1, y1, x2, y2 } = Astro.props;
+const { x1, y1, x2, y2, width = 1 } = Astro.props;
 ---
 
-<line x1={x1} y1={y1} x2={x2} y2={y2} stroke-width="1" stroke="var(--color-arch-white)" stroke-dasharray="4 3" />
+<line x1={x1} y1={y1} x2={x2} y2={y2} stroke-width={width} stroke="var(--color-arch-white)" stroke-dasharray="4 3" />

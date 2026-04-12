@@ -1,0 +1,61 @@
+---
+id: "quibble"
+order: 1
+title: "Quibble"
+icon: "/projects/quibble/project.svg"
+theme: "28232D99"
+tags: ["C#", ".NET", "Angular", "SignalR", "ASP.NET Core", "PostgreSQL", "Entity Framework Core", "Redis", "Docker"]
+summary: [
+  "Interactive, real-time quiz website.",
+  "Angular UI, ASP.NET Core API, SignalR for real-time events."
+]
+on: "SelfHostDocker"
+links: [
+  { href: "https://alexn.dev/quibble/github?utm_source=alexnoddings.com&utm_content=quibble", text: "GitHub" }
+]
+---
+
+# Summary
+
+`Quibble!` hosts interactive, real-time pub quizzes.
+
+The first version was hacked together in record time with Blazor Server during Covid-19 to run pub quizzes online with friends.
+
+The current version has an Angular frontend, and an ASP.NET Core API.
+Real-time events (such as questions being revealed, and answers being marked) are synced to connected users via SignalR.
+This is all behind YARP, a reverse-proxy gateway.
+
+Data is persisted in PostgreSQL using EF Core, and cached in Redis.
+Auth is delegated to Entra ID, and everything is self-hosted in containers.
+
+import QuibbleArchitecture from "$/content/projects/QuibbleArchitecture.astro";
+
+<QuibbleArchitecture/>
+
+# Demo
+
+I don't have a public demo available as I don't want to spend my time moderating free text input from complete strangers.
+
+Instead, here's a short demo of the app, with a host on the left and a player on the right:
+<video controls width="600px">
+  <source src="/projects/quibble/demo.mp4" type="video/mp4" width="600px" />
+</video>
+
+# Screenshots
+
+## Writing a quiz
+<img alt="Writing a quiz" src="/projects/quibble/draft.png" width="600px" />
+
+## Waiting for players to join
+<img alt="Waiting for players to join" src="/projects/quibble/lobby.png" width="600px" />
+
+## Hosting a quiz
+<img alt="Hosting a quiz" src="/projects/quibble/hosting.png" width="600px" />
+
+Quibble auto-marks correct answers. When a question is locked, submitted answers are:
+- lower cased
+- UTF normalised
+- stripped of punctuation, symbols, and stopwords (eg a, the)
+
+If these are sufficiently similar to the correct answer, they are auto-marked as correct.
+Non-matching answers are left to the host to decide.

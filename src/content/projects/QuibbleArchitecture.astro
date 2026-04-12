@@ -1,0 +1,82 @@
+---
+import Architecture from "$/components/projects/Architecture.astro";
+import ArchUser from "$/components/projects/ArchUser.astro";
+import ArchLabel from "$/components/projects/ArchLabel.astro";
+import ArchEntity from "$/components/projects/ArchEntity.astro";
+import ArchBrowser from "$/components/projects/ArchBrowser.astro";
+import ArchLink from "$/components/projects/ArchLink.astro";
+import SvelteIcon from "$/components/icons/brands/SvelteIcon.astro";
+import CloudflareComputeWorkersIcon from "$/components/icons/brands/CloudflareComputeWorkersIcon.astro";
+import CloudflareComputeD1Icon from "$/components/icons/brands/CloudflareComputeD1Icon.astro";
+import CloudflareOneIcon from "$/components/icons/brands/CloudflareOneIcon.astro";
+import YarpIcon from "$/components/icons/brands/YarpIcon.astro";
+import AngularIcon from "$/components/icons/brands/AngularIcon.astro";
+import SignalRIcon from "$/components/icons/brands/SignalRIcon.astro";
+import DotnetIcon from "$/components/icons/brands/DotnetIcon.astro";
+import EntraIdIcon from "$/components/icons/brands/EntraIdIcon.astro";
+import PostgresIcon from "$/components/icons/brands/PostgresIcon.astro";
+import RedisIcon from "$/components/icons/brands/RedisIcon.astro";
+---
+
+<Architecture viewBox="-50 -50 1000 650" maxWidth="650px">
+
+  <ArchLink x1={120} y1={150} x2={150} y2={150} width={2} />
+  <ArchLink x1={120} y1={350} x2={150} y2={350} width={2} />
+  <ArchLink x1={150} y1={150} x2={150} y2={350} width={2} />
+  <ArchLink x1={150} y1={250} x2={185} y2={250} width={2} />
+
+  <ArchLink x1={320} y1={250} x2={380} y2={250} width={2} />
+
+  <ArchLink x1={450} y1={180} x2={450} y2={140} width={2} />
+  <ArchLink x1={520} y1={120} x2={580} y2={180} width={2} />
+
+  <ArchLink x1={520} y1={250} x2={580} y2={250} width={2} />
+  <ArchLink x1={450} y1={360} x2={450} y2={450} width={2} />
+  <ArchLink x1={450} y1={450} x2={580} y2={450} width={2} />
+
+  <ArchLink x1={650} y1={180} x2={650} y2={140} width={2} />
+  <ArchLink x1={720} y1={250} x2={780} y2={250} width={2} />
+  <ArchLink x1={650} y1={350} x2={650} y2={380} width={2} />
+
+  <ArchUser x={0} y={100} w={100} h={100} label="Host" fontSize={16}/>
+  <ArchUser x={0} y={300} w={100} h={100} label="Players" fontSize={16}/>
+
+  <ArchEntity x={200} y={200} w={100} h={100} fill="#1a9fc122" stroke="#1a9fc1">
+    <YarpIcon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>YARP Gateway</ArchLabel>
+  </ArchEntity>
+
+  <ArchBrowser x={400} y={200} w={100} h={100} colour="#F5094C">
+    <AngularIcon x={25} y={35} width={50} height={50}/>
+    <ArchLabel x={50} y={120} fontSize={16}>Angular</ArchLabel>
+    <ArchLabel x={50} y={140} fontSize={16}>Application</ArchLabel>
+  </ArchBrowser>
+
+  <ArchEntity x={400} y={0} w={100} h={100} fill="#61c4dd22" stroke="#61c4dd">
+    <EntraIdIcon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>Entra ID</ArchLabel>
+  </ArchEntity>
+
+  <ArchEntity x={600} y={200} w={100} h={100} fill="#512bd422" stroke="#8967ff">
+    <DotnetIcon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>ASP.NET Core</ArchLabel>
+    <ArchLabel x={50} y={140} fontSize={16}>Web API</ArchLabel>
+  </ArchEntity>
+
+  <ArchEntity x={600} y={0} w={100} h={100} fill="#d82c2022" stroke="#d82c20">
+    <RedisIcon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>Redis Cache</ArchLabel>
+  </ArchEntity>
+
+  <ArchEntity x={600} y={400} w={100} h={100} fill="#59b4d922" stroke="#59b4d9">
+    <SignalRIcon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>SignalR Service</ArchLabel>
+  </ArchEntity>
+
+  <ArchEntity x={800} y={200} w={100} h={100} fill="#33679122" stroke="#53a7ff">
+    <PostgresIcon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>PostgreSQL</ArchLabel>
+    <ArchLabel x={50} y={140} fontSize={16}>Database</ArchLabel>
+  </ArchEntity>
+
+</Architecture>

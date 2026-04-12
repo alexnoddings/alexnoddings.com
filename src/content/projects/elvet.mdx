@@ -1,0 +1,56 @@
+---
+id: "elvet"
+order: 3
+title: "Elvet"
+icon: "/projects/elvet/project.svg"
+theme: "1C0E1977"
+tags: ["PCB Design", "Electronics", "CAD", "3D Printing", "Fusion 360", "KiCad"]
+summary: [
+  "Custom mechanical keyboard, designed from scratch."
+]
+---
+
+# Summary
+
+`Elvet` is a bespoke, ergo¹, ortholinear², split³, wireless⁴, mech⁵, Colemak-inspired⁶ keyboard.
+
+## A translation for non-keyboard-nerds
+1. `ergo`: designed to be **ergo**nomic for prolonged usage
+2. `ortholinear`: key are in straight columns, not staggered like on a usual keyboard, making them easier to navigate between
+3. `split`: the keyboard is in two halves, making positioning more ergonomic
+4. `wireless`: the keyboard is battery-powered and connects wirelessly
+5. `mech`: the keyboard uses mechanical keyswitches, not membranes or chiclets like on a usual keyboard, which are nicer to type on
+6. `Colemak-inspired`: the key layout is different to QWERTY, and involves less traveling between keys
+
+## Details for keyboard nerds
+- Each half is powered by a Nice! Nano v2
+- The switches are (currently) Kailh Twilight Chocs (linear, 35gf) in hot-swap sockets
+- It runs a build of ZMK
+- The layout is inspired by Colemak, but customised for my dev work
+- It has extra layers for:
+  - QWERTY compatability to avoid rebinding keys in every video game
+  - Function keys for F1-F12 and also F13-F24, a part of the [USB HID spec](https://www.usb.org/sites/default/files/hut1_7.pdf) which is almost never used by anything, making them _fantastic_ for macros and shortcuts in apps
+  - Numpad and media playback controls
+
+# Images
+
+## PCB schematic
+A bespoke key layout required a bespoke PCB. This was designed, laid out, and routed in KiCad.
+
+<img alt="PCB schematic" src="/projects/elvet/pcb-kicad.png" width="400px"/>
+
+## Case model
+Since the PCB is bespoke, it also needs a bespoke case. This was designed parametrically in Fusion 360.
+
+<img alt="CAD model" src="/projects/elvet/case-cad.png" width="400px"/>
+
+## Manufactured PCB
+The printed PCB. They're printed in two halves, with the main board and cluster daughter boards connected by mouse bites.
+These are snapped off and sanded down during assembly, before being soldered.
+
+<img alt="Manufactured PCB" src="/projects/elvet/pcb-made.png" width="400px"/>
+
+## Assembled keyboard
+This was from a case functional fit print - please ignore how ugly the print quality is on the thumb cluster!
+
+<img alt="Assembled keyboard" src="/projects/elvet/built-proto.png" width="400px"/>

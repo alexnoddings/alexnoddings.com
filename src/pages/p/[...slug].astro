@@ -54,48 +54,52 @@ const { Content, headings } = await render(project);
             ))
           }
         </ul>
-        <span class="frontmatter__icon">
-          <ServerIcon width={16} height={16} />
-        </span>
-        <h2 class="frontmatter__title">On</h2>
-        <ul class="frontmatter__content">
-          {
-            project.data.on === "CloudflareWorkers" ? (
-              <span class="frontmatter__pill bg-[#f14602]/10 text-[#ff4900]">
-                <CloudflareWorkersIcon width={24} /> Cloudflare Workers
-              </span>
-            ) : project.data.on === "GitHubPages" ? (
-              <span class="frontmatter__pill bg-[#6639ba]/20 text-[#bb97ff]">
-                <GitHubIcon width={24} class="fill-mist" /> GitHub Pages
-              </span>
-            ) : project.data.on === "NuGet" ? (
-              <span class="frontmatter__pill bg-[#004681]/10 text-[#0091FF]">
-                <NuGetOrgIcon width={24} /> NuGet
-              </span>
-            ) : project.data.on === "SelfHostDocker" ? (
-              <span class="frontmatter__pill bg-[#1763ee]/10 text-[#4989ff]">
-                <ContainerIcon width={22} class="me-1 fill-[#4989ff]" /> Self hosted
-              </span>
-            ) : (
-              <>{project.data.on}</>
-            )
-          }
-        </ul>
-        <span class="frontmatter__icon">
-          <LinkExternalIcon width={16} height={16} />
-        </span>
-        <h2 class="frontmatter__title">Links</h2>
-        <ul class="frontmatter__content">
-          {
-            project.data.links.map((link) => (
-              <li>
-                <a href={link.href} class="frontmatter__link frontmatter__pill bg-orchid/10 text-orchid underline decoration-orchid">
-                  {link.text}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+        {project.data.on && <>
+          <span class="frontmatter__icon">
+            <ServerIcon width={16} height={16} />
+          </span>
+          <h2 class="frontmatter__title">On</h2>
+          <ul class="frontmatter__content">
+            {
+              project.data.on === "CloudflareWorkers" ? (
+                <span class="frontmatter__pill bg-[#f14602]/10 text-[#ff4900]">
+                  <CloudflareWorkersIcon width={24} /> Cloudflare Workers
+                </span>
+              ) : project.data.on === "GitHubPages" ? (
+                <span class="frontmatter__pill bg-[#6639ba]/20 text-[#bb97ff]">
+                  <GitHubIcon width={24} class="fill-mist" /> GitHub Pages
+                </span>
+              ) : project.data.on === "NuGet" ? (
+                <span class="frontmatter__pill bg-[#004681]/10 text-[#0091FF]">
+                  <NuGetOrgIcon width={24} /> NuGet
+                </span>
+              ) : project.data.on === "SelfHostDocker" ? (
+                <span class="frontmatter__pill bg-[#1763ee]/10 text-[#4989ff]">
+                  <ContainerIcon width={22} class="me-1 fill-[#4989ff]" /> Self hosted
+                </span>
+              ) : (
+                <>{project.data.on}</>
+              )
+            }
+          </ul>
+        </>}
+        {project.data.links && <>
+          <span class="frontmatter__icon">
+            <LinkExternalIcon width={16} height={16} />
+          </span>
+          <h2 class="frontmatter__title">Links</h2>
+          <ul class="frontmatter__content">
+            {
+              project.data.links.map((link) => (
+                <li>
+                  <a href={link.href} class="frontmatter__link frontmatter__pill bg-orchid/10 text-orchid underline decoration-orchid">
+                    {link.text}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </>}
         <span class="frontmatter__icon">
           <MoveToBottomIcon width={16} height={16} />
         </span>
@@ -222,12 +226,21 @@ const { Content, headings } = await render(project);
       @apply text-mist decoration-smoke underline;
     }
 
-    ul {
-      @apply flex flex-col gap-1 pl-2;
+    ul,
+    ol {
+      @apply flex flex-col gap-1 ps-2;
+      li::before {
+        @apply text-mist me-1;
+      }
     }
-    li::before {
+
+    ul li::before {
       content: "·";
-      @apply text-mist mr-1;
+    }
+
+    ol {
+      @apply ms-4;
+      list-style-type: decimal;
     }
 
     code {

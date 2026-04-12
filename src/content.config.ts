@@ -17,13 +17,13 @@ const projects = defineCollection({
       z.literal("GitHubPages"),
       z.literal("NuGet"),
       z.literal("SelfHostDocker")
-    ]),
+    ]).optional(),
     links: z.array(
       z.object({
         href: z.string(),
         text: z.string(),
       }),
-    ),
+    ).optional(),
   }),
 });
 

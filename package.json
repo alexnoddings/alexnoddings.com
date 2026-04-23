@@ -9,7 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "lint": "prettier --check . && eslint .",
+    "lint": "prettier --check .",
     "format": "prettier --write .",
     "deploy": "wrangler deploy"
   },

@@ -31,10 +31,10 @@ const href = `/p/${id}`;
     <div class="project__summary">
       {summary.map(s => <p>{s}</p>)}
     </div>
-    <ul class="flex flex-row flex-wrap gap-2" role="list">
+    <ul class="techs animate-pop-in" role="list">
       {
-        techs.map((tech) => (
-          <li class="bg-lavender/10 text-lavender rounded-full px-2 py-1 text-xs">{tech}</li>
+        techs.map((tech, i) => (
+          <li class="pop-in" style={{'--animation-i': i}}>{tech}</li>
         ))
       }
     </ul>
@@ -92,6 +92,14 @@ const href = `/p/${id}`;
   .project:hover {
     .project__icon::before {
       background-color: var(--project-theme);
+    }
+  }
+
+  .techs {
+    @apply flex flex-row flex-wrap gap-2;
+
+    li {
+      @apply bg-lavender/10 text-lavender rounded-full px-2 py-1 text-xs;
     }
   }
 </style>

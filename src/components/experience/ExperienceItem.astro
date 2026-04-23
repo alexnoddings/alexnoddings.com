@@ -16,8 +16,10 @@ const { experience } = Astro.props;
       <ul class="experience__summary flex flex-col gap-1 pt-1 pb-2" role="list">
         {experience.summaries.map((summary) => <li>{summary}</li>)}
       </ul>
-      <ul class="techs" role="list">
-        {experience.techs.map((tech) => <li>{tech}</li>)}
+      <ul class="techs animate-pop-in" role="list">
+        {experience.techs.map((tech, i) =>
+          <li class="pop-in" style={{'--animation-i': i}}>{tech}</li>
+        )}
       </ul>
     </div>
   </div>
@@ -28,7 +30,7 @@ const { experience } = Astro.props;
 
   .experience {
     @apply relative block rounded-md px-6 py-5;
-    @apply transition-colors;
+    @apply transition;
     @apply hover:bg-lavender/5 hover:opacity-100!;
     @apply group-hover/experience:opacity-50;
     @apply motion-reduce:group-hover/experience:opacity-100;
@@ -41,7 +43,7 @@ const { experience } = Astro.props;
       width: 100%;
       height: 100%;
       opacity: 67%;
-      @apply transition-colors;
+      @apply transition;
     }
     &:hover::before {
       @apply bg-violet;

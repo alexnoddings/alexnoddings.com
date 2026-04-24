@@ -135,6 +135,6 @@ a.link-icon {
 @media (prefers-reduced-motion) {
     .animate-pop-in .pop-in {
         opacity: 1;
-        animation: none;
+        animation: none!important;
     }
 }

@@ -5,12 +5,13 @@ import { Font } from "astro:assets";
 
 interface Props {
   title?: string;
+  description?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title: pageTitle } = Astro.props;
-const description = SITE_DESCRIPTION;
+const { title: pageTitle, description: pageDescription } = Astro.props;
+const description = pageDescription ?? SITE_DESCRIPTION;
 const image = new URL("/meta/og.png", Astro.url);
 
 const title = !pageTitle

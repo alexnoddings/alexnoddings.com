@@ -23,9 +23,10 @@ type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
 const { Content, headings } = await render(project);
+const description = project.data.summary.join(' ')
 ---
 
-<MainLayout title={project.data.title}>
+<MainLayout title={project.data.title} description={description}>
   <div class="project" style={{ "--project-theme": "#" + project.data.theme }}>
     <div class="flex">
       <a href="/" class="back">

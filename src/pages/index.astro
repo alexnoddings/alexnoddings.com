@@ -19,15 +19,17 @@ const links = [
     <header class="home-left">
       <IndexSummary />
       <IndexSocials />
-      <ul class="home-links">
-        {links.map(({ title, href }) => (
-          <li class="w-fit">
-            <a href={href} class="link-fancy">
-              {title}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <nav aria-label="Page sections">
+        <ul class="home-links">
+          {links.map(({ title, href }) => (
+            <li class="w-fit">
+              <a href={href} class="link-fancy">
+                {title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
     <div class="home-right">
       <IndexAbout />

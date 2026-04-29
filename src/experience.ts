@@ -9,7 +9,7 @@ type PeriodTitle = {
   period: string;
 };
 
-export type ExperienceTitle = StartEndTitle | PeriodTitle;
+type ExperienceTitle = StartEndTitle | PeriodTitle;
 
 export type Experience = {
   titles: ExperienceTitle[];

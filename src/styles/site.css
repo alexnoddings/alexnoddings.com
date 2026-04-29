@@ -102,6 +102,10 @@ body {
 	@apply bg-lavender/40;
 }
 
+*:focus {
+	@apply outline-2 outline-lavender;
+}
+
 a.link-fancy {
 	@apply text-mist;
 	@apply hover:text-gradient-r hover:from-lavender hover:to-orchid;

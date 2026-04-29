@@ -110,9 +110,11 @@ const description = project.data.summary.join(' ')
             headings
               .filter((h) => h.depth == 2)
               .map((heading) => (
-                <a href={`#${heading.slug}`} class="frontmatter__link frontmatter__pill bg-turquoise/10 text-turquoise underline decoration-turquoise">
-                  {heading.text}
-                </a>
+                <li>
+                  <a href={`#${heading.slug}`} class="frontmatter__link frontmatter__pill bg-turquoise/10 text-turquoise underline decoration-turquoise">
+                    {heading.text}
+                  </a>
+                </li>
               ))
           }
         </ul>

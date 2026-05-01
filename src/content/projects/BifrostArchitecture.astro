@@ -1,0 +1,54 @@
+---
+import Architecture from "$/components/projects/Architecture.astro";
+import ArchUser from "$/components/projects/ArchUser.astro";
+import ArchLabel from "$/components/projects/ArchLabel.astro";
+import ArchEntity from "$/components/projects/ArchEntity.astro";
+import ArchLink from "$/components/projects/ArchLink.astro";
+import ArchipelagoIcon from "$/components/icons/brands/ArchipelagoIcon.astro";
+import DiscordIcon from "$/components/icons/brands/DiscordIcon.astro";
+import GoIcon from "$/components/icons/brands/GoIcon.astro";
+import SqliteIcon from "$/components/icons/brands/SqliteIcon.astro";
+---
+
+<Architecture viewBox="-50 -50 910 480" maxWidth="650px">
+
+  <ArchLink x1={120} y1={175} x2={150} y2={175} width={2} />
+  <ArchLink x1={150} y1={50} x2={150} y2={300} width={2} />
+  <ArchLink x1={150} y1={50} x2={180} y2={50} width={2} />
+  <ArchLink x1={150} y1={300} x2={180} y2={300} width={2} />
+
+
+  <ArchLabel x={370} y={30} fontSize={18} fill="var(--color-mist)">HTTP API</ArchLabel>
+  <ArchLink x1={320} y1={40} x2={450} y2={40} width={2} />
+  <ArchLabel x={380} y={80} fontSize={18} fill="var(--color-mist)">WebSockets</ArchLabel>
+  <ArchLink x1={320} y1={90} x2={450} y2={90} width={2} />
+  <ArchLink x1={320} y1={300} x2={450} y2={300} width={2} />
+  <ArchLink x1={450} y1={40} x2={450} y2={300} width={2} />
+  <ArchLink x1={450} y1={175} x2={480} y2={175} width={2} />
+
+  <ArchLink x1={620} y1={175} x2={680} y2={175} width={2} />
+
+  <ArchUser x={0} y={125} w={100} h={100} label="Players" fontSize={16}/>
+
+  <ArchEntity x={200} y={0} w={100} h={100} fill="var(--color-arch-blue-bg)" stroke="var(--color-arch-blue)">
+    <ArchipelagoIcon x={15} y={15} width={70} height={70}/>
+    <ArchLabel x={50} y={120} fontSize={16}>Archipelago</ArchLabel>
+  </ArchEntity>
+
+  <ArchEntity x={200} y={250} w={100} h={100} fill="#5865F233" stroke="#5865F2">
+    <DiscordIcon x={15} y={15} width={70} height={70}/>
+    <ArchLabel x={50} y={120} fontSize={16}>Discord</ArchLabel>
+  </ArchEntity>
+
+  <ArchEntity x={500} y={125} w={100} h={100} fill="#00ACD744" stroke="#00ACD7">
+    <GoIcon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>GO App</ArchLabel>
+  </ArchEntity>
+
+  <ArchEntity x={700} y={125} w={100} h={100} fill="#5DB3E444" stroke="#5DB3E4">
+    <SqliteIcon x={10} y={10} width={80} height={80}/>
+    <ArchLabel x={50} y={120} fontSize={16}>SQLite</ArchLabel>
+    <ArchLabel x={50} y={140} fontSize={16}>database</ArchLabel>
+  </ArchEntity>
+
+</Architecture>

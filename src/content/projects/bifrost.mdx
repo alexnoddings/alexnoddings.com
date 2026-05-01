@@ -1,0 +1,29 @@
+---
+id: "bifrost"
+order: 3
+title: "bifröst"
+icon: "/projects/bifrost/project.svg"
+theme: "D1ECE73A"
+tags: ["Go", "WebSockets", "HTTP", "SQLite","Archipelago", "Discord"]
+summary: [
+  "Bridges notifications from Archipelago.gg games to Discord channels",
+]
+on: "SelfHostDocker"
+links: [
+  { href: "https://alexn.dev/bifrost/github?utm_source=alexnoddings.com&utm_content=bifrost", text: "GitHub" }
+]
+---
+
+# Summary
+
+bifröst bridges notifications from [Archipelago.gg](https://archipelago.gg/faq/en/) games to Discord channels.
+
+Progress in AP games is commonly blocked on another player unlocking something for you.
+Normally, you only find out you're unblocked by logging in to the game to check, or if a player knows you were waiting for an item and messages you themselves.
+
+bifröst connects to Archipelago games as a fake player, and monitors for unlock messages being sent by the server.
+It can then notify users in a Discord channel.
+
+import BifrostArchitecture from "$/content/projects/BifrostArchitecture.astro";
+
+<BifrostArchitecture/>

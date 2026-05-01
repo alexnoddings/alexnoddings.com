@@ -3,11 +3,12 @@ type Props = {
   x: number;
   y: number;
   fontSize: number;
+  fill?: string;
 }
 
-const { x, y, fontSize } = Astro.props;
+const { x, y, fontSize, fill } = Astro.props;
 ---
 
-<text x={x} y={y} font-size={fontSize} text-anchor="middle">
+<text x={x} y={y} font-size={fontSize} text-anchor="middle" fill={fill}>
   <slot/>
 </text>

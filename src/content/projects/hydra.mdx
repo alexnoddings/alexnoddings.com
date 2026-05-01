@@ -1,0 +1,33 @@
+---
+id: "hyrda"
+order: 4
+title: "hydra"
+icon: "/projects/hydra/project.svg"
+theme: "A5B55B44"
+tags: ["Rust", "HTTP", "Utility"]
+summary: [
+  "Lightweight developer utility for redirecting web requests",
+]
+on: "SelfHostDocker"
+links: [
+  { href: "https://alexn.dev/hydra/github?utm_source=alexnoddings.com&utm_content=hydra", text: "GitHub" }
+]
+---
+
+# What
+
+hydra is a lightweight utility for redirecting web requests based on the host/path requested.
+
+# Why
+
+I commonly develop systems with multiple user types, and I use [Firefox Containers](https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/)
+to have multiple instances of a site open in one window with different accounts logged in.
+
+Containers has a feature to automatically open a site in a container,
+so this utility allows me to navigate to `admin.localhost/dash`,
+which Containers will automatically open in my Admin container,
+then be redirected to `localhost:xyz/some/dashboard/page`.
+
+This behaviour relies on modern browsers automatically mapping `*.localhost` to `localhost`.
+
+Even shorter redirects can be achieved by editing the hosts file to resolve `admin` or similar to localhost.

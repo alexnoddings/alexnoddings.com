@@ -142,3 +142,13 @@ a.link-icon {
         animation: none!important;
     }
 }
+
+pre.astro-code {
+	@apply px-2 py-1;
+	@apply bg-charcoal!;
+	@apply rounded-md;
+
+	code {
+		@apply p-0;
+	}
+}

@@ -16,7 +16,8 @@ const projects = defineCollection({
       z.literal("CloudflareWorkers"),
       z.literal("GitHubPages"),
       z.literal("NuGet"),
-      z.literal("SelfHostDocker")
+      z.literal("SelfHostDocker"),
+      z.literal("CLI")
     ]).optional(),
     links: z.array(
       z.object({

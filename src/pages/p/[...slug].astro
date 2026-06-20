@@ -11,6 +11,7 @@ import ContainerIcon from "$/components/icons/brands/ContainerIcon.astro";
 import WrenchIcon from "$/components/icons/WrenchIcon.astro";
 import ServerIcon from "$/components/icons/ServerIcon.astro";
 import MoveToBottomIcon from "$/components/icons/MoveToBottomIcon.astro";
+import TerminalIcon from "$/components/icons/TerminalIcon.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("projects");
@@ -77,6 +78,10 @@ const description = project.data.summary.join(' ')
               ) : project.data.on === "SelfHostDocker" ? (
                 <span class="frontmatter__pill bg-[#1763ee]/10 text-[#4989ff]">
                   <ContainerIcon width={22} class="me-1 fill-[#4989ff]" /> Self hosted
+                </span>
+              ) : project.data.on === "CLI" ? (
+                <span class="frontmatter__pill bg-[#3c4549]/35 text-[#b8d5e1]">
+                  <TerminalIcon width={22} class="me-1 fill-[#b8d5e1]" /> Command line
                 </span>
               ) : (
                 <>{project.data.on}</>

@@ -1,0 +1,61 @@
+---
+id: "mycelium"
+order: 4
+title: "mycelium"
+icon: "/projects/mycelium/project.svg"
+theme: "C088183A"
+tags: ["Go", "CLI", "Git", "Worktrees"]
+summary: [
+  "Command-line utility managing Git worktrees"
+]
+on: "CLI"
+links: [
+  { href: "https://alexn.dev/mycelium/github", text: "GitHub" }
+]
+---
+
+# Summary
+Mycelium is a command line utility written in Go to help me manage git worktrees while developing.
+
+# Commands
+Mycelium is invoked using `myc`.
+
+## `myc init`
+Initialises a bare git clone ready for worktrees to be added to.
+```bash
+myc init https://github.com/alexnoddings/alexnoddings.com
+# clones the repository into the "alexnoddings.com" directory
+```
+
+## `myc add`
+Adds a new worktree to the repository. This fetches the latest default branch changes, creates a branch for you, and sets up the target directory.
+```bash
+myc add new-project --prefix feat/
+# fetches the default branch, and creates the branch "feat/new-project" in the "new-project" directory
+```
+
+## `myc cd`
+Switch between existing worktrees.
+
+This can be executed from anywhere inside a mycelium repository, including nested directories, to go to the root of the repo, or the root of a worktree.
+
+Supports fuzzy matching. `new-project` will change to the `new-project` directory, as will `proj` if no other directory contains the string `proj`.
+```bash
+# executed in:
+# ~/src/alexnoddings.com/new-project/src/content/projects/
+myc cd oth
+# changes directory to:
+# ~/src/alexnoddings.com/other-project/
+```
+
+## `myc init-shell`
+Since a process can't change the active directory of a shell, mycelium uses a shell script to intercept calls to `myc`.
+Non-cd commands are forwarded, cd commands are intercepted to change the current directory.
+```powershell
+# In Microsoft.PowerShell_profile.ps1
+Invoke-Expression (& myc init-shell pwsh | Out-String)
+```
+
+# Notes
+
+Inspired by [Grove](https://grove.safia.sh/)
